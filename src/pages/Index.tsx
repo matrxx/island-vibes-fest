@@ -245,10 +245,10 @@ const Index = () => {
         <div className="relative z-10 h-full flex items-center justify-center px-6">
           <ScrollReveal>
             <div className="text-center max-w-4xl">
-              <h2 className="font-display text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
+              <h2 className="font-display text-5xl md:text-7xl font-black mb-6 leading-tight text-stone-950">
                 Feel the Rhythm of the Islands
               </h2>
-              <p className="text-xl md:text-2xl text-white/90 font-light">
+              <p className="text-xl md:text-2xl font-light text-neutral-950">
                 Where every beat tells a story and every color celebrates life
               </p>
             </div>
