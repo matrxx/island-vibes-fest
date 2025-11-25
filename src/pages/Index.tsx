@@ -1,13 +1,68 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { ParallaxSection } from "@/components/ParallaxSection";
+import { TicketCard } from "@/components/TicketCard";
+import { TicketModal } from "@/components/TicketModal";
 import heroMain from "@/assets/hero-main.jpg";
 import beachScene from "@/assets/beach-scene.jpg";
 import costumeDetail from "@/assets/costume-detail.jpg";
 import { Calendar, MapPin, Music2, Sparkles, Users, Waves } from "lucide-react";
 
 const Index = () => {
+  const [ticketModalOpen, setTicketModalOpen] = useState(false);
+  const [selectedTicket, setSelectedTicket] = useState<{ name: string; price: number } | null>(null);
+
+  const handleTicketSelect = (name: string, price: number) => {
+    setSelectedTicket({ name, price });
+    setTicketModalOpen(true);
+  };
+
+  const tickets = [
+    {
+      name: "General Admission",
+      price: 149,
+      description: "Full festival access",
+      features: [
+        "4-day festival access",
+        "All main stage performances",
+        "Food & beverage vendors",
+        "General viewing areas",
+        "Festival merchandise discount"
+      ]
+    },
+    {
+      name: "VIP Experience",
+      price: 349,
+      description: "Enhanced festival experience",
+      popular: true,
+      features: [
+        "Everything in General Admission",
+        "VIP viewing platforms",
+        "Exclusive VIP lounge access",
+        "Complimentary welcome drink",
+        "Private restroom facilities",
+        "Express entry lanes",
+        "Meet & greet opportunities"
+      ]
+    },
+    {
+      name: "All-Access Pass",
+      price: 749,
+      description: "Ultimate Caribbean experience",
+      features: [
+        "Everything in VIP Experience",
+        "Backstage access",
+        "Artist meet & greets",
+        "Premium open bar",
+        "Gourmet dining experience",
+        "Private concierge service",
+        "Exclusive after-parties",
+        "Commemorative gift package"
+      ]
+    }
+  ];
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -29,7 +84,11 @@ const Index = () => {
             <a href="#venue" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Venue
             </a>
-            <Button size="sm" className="bg-primary hover:bg-primary/90 text-white shadow-premium">
+            <Button 
+              size="sm" 
+              onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-primary hover:bg-primary/90 text-white shadow-premium"
+            >
               Get Tickets
             </Button>
           </div>
@@ -59,12 +118,13 @@ const Index = () => {
               Where the spirit of the Caribbean comes alive in a symphony of color, rhythm, and culture
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-gradient-premium text-white px-10 py-7 text-lg font-semibold shadow-premium hover:shadow-glow transition-all duration-500 hover:scale-105 border-0"
-              >
-                Reserve Your Experience
-              </Button>
+            <Button 
+              size="lg" 
+              onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-gradient-premium text-white px-10 py-7 text-lg font-semibold shadow-premium hover:shadow-glow transition-all duration-500 hover:scale-105 border-0"
+            >
+              Reserve Your Experience
+            </Button>
               <Button 
                 size="lg" 
                 variant="outline"
@@ -316,6 +376,36 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Tickets Section */}
+      <section id="tickets" className="py-32 px-6 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <ScrollReveal>
+            <div className="text-center mb-20">
+              <p className="text-sm font-bold text-primary mb-4 tracking-[0.2em] uppercase">
+                Secure Your Spot
+              </p>
+              <h2 className="font-display text-5xl md:text-6xl font-black text-foreground mb-6">
+                Festival Tickets
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                Choose the perfect experience for your Caribbean adventure
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {tickets.map((ticket, index) => (
+              <ScrollReveal key={index} delay={index * 150}>
+                <TicketCard
+                  {...ticket}
+                  onSelect={() => handleTicketSelect(ticket.name, ticket.price)}
+                />
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-32 px-6 bg-gradient-premium relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -334,6 +424,7 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button 
                 size="lg"
+                onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
                 className="bg-white text-foreground hover:bg-white/95 px-12 py-7 text-lg font-bold shadow-glow transition-all duration-500 hover:scale-105"
               >
                 Purchase Tickets
@@ -397,6 +488,13 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Ticket Modal */}
+      <TicketModal
+        open={ticketModalOpen}
+        onOpenChange={setTicketModalOpen}
+        ticketType={selectedTicket}
+      />
     </div>
   );
 };
