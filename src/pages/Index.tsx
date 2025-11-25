@@ -9,62 +9,37 @@ import heroMain from "@/assets/hero-main.jpg";
 import beachScene from "@/assets/beach-scene.jpg";
 import costumeDetail from "@/assets/costume-detail.jpg";
 import { Calendar, MapPin, Music2, Sparkles, Users, Waves } from "lucide-react";
-
 const Index = () => {
   const [ticketModalOpen, setTicketModalOpen] = useState(false);
-  const [selectedTicket, setSelectedTicket] = useState<{ name: string; price: number } | null>(null);
-
+  const [selectedTicket, setSelectedTicket] = useState<{
+    name: string;
+    price: number;
+  } | null>(null);
   const handleTicketSelect = (name: string, price: number) => {
-    setSelectedTicket({ name, price });
+    setSelectedTicket({
+      name,
+      price
+    });
     setTicketModalOpen(true);
   };
-
-  const tickets = [
-    {
-      name: "General Admission",
-      price: 149,
-      description: "Full festival access",
-      features: [
-        "4-day festival access",
-        "All main stage performances",
-        "Food & beverage vendors",
-        "General viewing areas",
-        "Festival merchandise discount"
-      ]
-    },
-    {
-      name: "VIP Experience",
-      price: 349,
-      description: "Enhanced festival experience",
-      popular: true,
-      features: [
-        "Everything in General Admission",
-        "VIP viewing platforms",
-        "Exclusive VIP lounge access",
-        "Complimentary welcome drink",
-        "Private restroom facilities",
-        "Express entry lanes",
-        "Meet & greet opportunities"
-      ]
-    },
-    {
-      name: "All-Access Pass",
-      price: 749,
-      description: "Ultimate Caribbean experience",
-      features: [
-        "Everything in VIP Experience",
-        "Backstage access",
-        "Artist meet & greets",
-        "Premium open bar",
-        "Gourmet dining experience",
-        "Private concierge service",
-        "Exclusive after-parties",
-        "Commemorative gift package"
-      ]
-    }
-  ];
-  return (
-    <div className="min-h-screen bg-background">
+  const tickets = [{
+    name: "General Admission",
+    price: 149,
+    description: "Full festival access",
+    features: ["4-day festival access", "All main stage performances", "Food & beverage vendors", "General viewing areas", "Festival merchandise discount"]
+  }, {
+    name: "VIP Experience",
+    price: 349,
+    description: "Enhanced festival experience",
+    popular: true,
+    features: ["Everything in General Admission", "VIP viewing platforms", "Exclusive VIP lounge access", "Complimentary welcome drink", "Private restroom facilities", "Express entry lanes", "Meet & greet opportunities"]
+  }, {
+    name: "All-Access Pass",
+    price: 749,
+    description: "Ultimate Caribbean experience",
+    features: ["Everything in VIP Experience", "Backstage access", "Artist meet & greets", "Premium open bar", "Gourmet dining experience", "Private concierge service", "Exclusive after-parties", "Commemorative gift package"]
+  }];
+  return <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -84,11 +59,9 @@ const Index = () => {
             <a href="#venue" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Venue
             </a>
-            <Button 
-              size="sm" 
-              onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-primary hover:bg-primary/90 text-white shadow-premium"
-            >
+            <Button size="sm" onClick={() => document.getElementById('tickets')?.scrollIntoView({
+            behavior: 'smooth'
+          })} className="bg-primary hover:bg-primary/90 text-white shadow-premium">
               Get Tickets
             </Button>
           </div>
@@ -98,10 +71,9 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <ParallaxSection speed={0.3} className="absolute inset-0">
-          <div 
-            className="absolute inset-0 bg-cover bg-center scale-110"
-            style={{ backgroundImage: `url(${heroMain})` }}
-          >
+          <div className="absolute inset-0 bg-cover bg-center scale-110" style={{
+          backgroundImage: `url(${heroMain})`
+        }}>
             <div className="absolute inset-0 bg-gradient-dark" />
           </div>
         </ParallaxSection>
@@ -111,25 +83,19 @@ const Index = () => {
             <p className="text-sm md:text-base font-semibold text-gold mb-4 tracking-[0.3em] uppercase">
               June 15-18, 2025
             </p>
-            <h1 className="font-display text-7xl md:text-9xl font-black text-white mb-6 leading-none tracking-tight">
+            <h1 className="font-display text-7xl md:text-9xl font-black mb-6 leading-none tracking-tight text-gray-950">
               CARIBÉ<span className="text-transparent bg-clip-text bg-gradient-premium">FEST</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-12 font-light max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl mb-12 font-light max-w-3xl mx-auto leading-relaxed text-neutral-950">
               Where the spirit of the Caribbean comes alive in a symphony of color, rhythm, and culture
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-gradient-premium text-white px-10 py-7 text-lg font-semibold shadow-premium hover:shadow-glow transition-all duration-500 hover:scale-105 border-0"
-            >
+            <Button size="lg" onClick={() => document.getElementById('tickets')?.scrollIntoView({
+              behavior: 'smooth'
+            })} className="bg-gradient-premium text-white px-10 py-7 text-lg font-semibold shadow-premium hover:shadow-glow transition-all duration-500 hover:scale-105 border-0">
               Reserve Your Experience
             </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="border-2 border-white/30 text-white bg-white/5 backdrop-blur-md hover:bg-white hover:text-foreground px-10 py-7 text-lg font-semibold transition-all duration-500 hover:scale-105"
-              >
+              <Button size="lg" variant="outline" className="border-2 border-white/30 bg-white/5 backdrop-blur-md hover:bg-white px-10 py-7 text-lg font-semibold transition-all duration-500 hover:scale-105 text-neutral-950">
                 Explore the Journey
               </Button>
             </div>
@@ -148,13 +114,23 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-b from-background to-muted/30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: "50K+", label: "Festival Attendees", icon: Users },
-              { number: "100+", label: "International Artists", icon: Music2 },
-              { number: "4", label: "Days of Celebration", icon: Calendar },
-              { number: "10+", label: "Caribbean Islands", icon: MapPin }
-            ].map((stat, index) => (
-              <ScrollReveal key={index} delay={index * 100}>
+            {[{
+            number: "50K+",
+            label: "Festival Attendees",
+            icon: Users
+          }, {
+            number: "100+",
+            label: "International Artists",
+            icon: Music2
+          }, {
+            number: "4",
+            label: "Days of Celebration",
+            icon: Calendar
+          }, {
+            number: "10+",
+            label: "Caribbean Islands",
+            icon: MapPin
+          }].map((stat, index) => <ScrollReveal key={index} delay={index * 100}>
                 <div className="text-center">
                   <stat.icon className="w-8 h-8 mx-auto mb-4 text-primary" />
                   <div className="font-display text-5xl md:text-6xl font-black text-foreground mb-2">
@@ -164,8 +140,7 @@ const Index = () => {
                     {stat.label}
                   </p>
                 </div>
-              </ScrollReveal>
-            ))}
+              </ScrollReveal>)}
           </div>
         </div>
       </section>
@@ -200,11 +175,7 @@ const Index = () => {
             <ScrollReveal delay={200}>
               <div className="relative">
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-premium">
-                  <img 
-                    src={costumeDetail} 
-                    alt="Caribbean festival costume detail" 
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
+                  <img src={costumeDetail} alt="Caribbean festival costume detail" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
                 </div>
                 <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-gradient-premium rounded-full blur-3xl opacity-20" />
               </div>
@@ -231,27 +202,22 @@ const Index = () => {
           </ScrollReveal>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Music2,
-                title: "Live Performances",
-                description: "World-class artists performing authentic Caribbean music from soca and calypso to reggae and dancehall.",
-                gradient: "from-primary to-ocean-light"
-              },
-              {
-                icon: Sparkles,
-                title: "Carnival Mas",
-                description: "Experience the artistry of traditional masquerade with elaborate costumes and spectacular choreography.",
-                gradient: "from-coral to-gold"
-              },
-              {
-                icon: Users,
-                title: "Cultural Workshops",
-                description: "Learn traditional dance, music, and crafts from master artists and cultural ambassadors.",
-                gradient: "from-forest to-primary"
-              }
-            ].map((feature, index) => (
-              <ScrollReveal key={index} delay={index * 150}>
+            {[{
+            icon: Music2,
+            title: "Live Performances",
+            description: "World-class artists performing authentic Caribbean music from soca and calypso to reggae and dancehall.",
+            gradient: "from-primary to-ocean-light"
+          }, {
+            icon: Sparkles,
+            title: "Carnival Mas",
+            description: "Experience the artistry of traditional masquerade with elaborate costumes and spectacular choreography.",
+            gradient: "from-coral to-gold"
+          }, {
+            icon: Users,
+            title: "Cultural Workshops",
+            description: "Learn traditional dance, music, and crafts from master artists and cultural ambassadors.",
+            gradient: "from-forest to-primary"
+          }].map((feature, index) => <ScrollReveal key={index} delay={index * 150}>
                 <Card className="group p-8 bg-card hover:shadow-premium transition-all duration-500 hover:-translate-y-2 border-border overflow-hidden relative">
                   <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
                   <feature.icon className="w-14 h-14 text-primary mb-6 group-hover:scale-110 transition-transform duration-500" />
@@ -262,8 +228,7 @@ const Index = () => {
                     {feature.description}
                   </p>
                 </Card>
-              </ScrollReveal>
-            ))}
+              </ScrollReveal>)}
           </div>
         </div>
       </section>
@@ -271,10 +236,9 @@ const Index = () => {
       {/* Parallax Image Section */}
       <section className="relative h-[70vh] overflow-hidden">
         <ParallaxSection speed={0.5} className="absolute inset-0">
-          <div 
-            className="absolute inset-0 bg-cover bg-center scale-110"
-            style={{ backgroundImage: `url(${beachScene})` }}
-          >
+          <div className="absolute inset-0 bg-cover bg-center scale-110" style={{
+          backgroundImage: `url(${beachScene})`
+        }}>
             <div className="absolute inset-0 bg-gradient-overlay" />
           </div>
         </ParallaxSection>
@@ -310,8 +274,7 @@ const Index = () => {
           </ScrollReveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {["Machel Montano", "Shaggy", "Buju Banton", "Nadia Batson", "Busy Signal", "Patrice Roberts", "Konshens", "Destra Garcia"].map((artist, index) => (
-              <ScrollReveal key={index} delay={index * 80}>
+            {["Machel Montano", "Shaggy", "Buju Banton", "Nadia Batson", "Busy Signal", "Patrice Roberts", "Konshens", "Destra Garcia"].map((artist, index) => <ScrollReveal key={index} delay={index * 80}>
                 <Card className="group relative overflow-hidden bg-card border-border hover:shadow-premium transition-all duration-500 hover:-translate-y-2">
                   <div className="aspect-square bg-gradient-to-br from-primary/20 to-coral/20 flex items-center justify-center">
                     <Music2 className="w-16 h-16 text-primary/40 group-hover:scale-125 transition-transform duration-500" />
@@ -322,8 +285,7 @@ const Index = () => {
                     </h3>
                   </div>
                 </Card>
-              </ScrollReveal>
-            ))}
+              </ScrollReveal>)}
           </div>
         </div>
       </section>
@@ -394,14 +356,9 @@ const Index = () => {
           </ScrollReveal>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {tickets.map((ticket, index) => (
-              <ScrollReveal key={index} delay={index * 150}>
-                <TicketCard
-                  {...ticket}
-                  onSelect={() => handleTicketSelect(ticket.name, ticket.price)}
-                />
-              </ScrollReveal>
-            ))}
+            {tickets.map((ticket, index) => <ScrollReveal key={index} delay={index * 150}>
+                <TicketCard {...ticket} onSelect={() => handleTicketSelect(ticket.name, ticket.price)} />
+              </ScrollReveal>)}
           </div>
         </div>
       </section>
@@ -410,7 +367,9 @@ const Index = () => {
       <section className="py-32 px-6 bg-gradient-premium relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-20 w-96 h-96 bg-white rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-white rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-white rounded-full blur-3xl animate-float" style={{
+          animationDelay: '2s'
+        }} />
         </div>
         
         <div className="max-w-5xl mx-auto text-center relative z-10">
@@ -422,18 +381,12 @@ const Index = () => {
               Secure your place at the most anticipated Caribbean celebration of the year
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button 
-                size="lg"
-                onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white text-foreground hover:bg-white/95 px-12 py-7 text-lg font-bold shadow-glow transition-all duration-500 hover:scale-105"
-              >
+              <Button size="lg" onClick={() => document.getElementById('tickets')?.scrollIntoView({
+              behavior: 'smooth'
+            })} className="bg-white text-foreground hover:bg-white/95 px-12 py-7 text-lg font-bold shadow-glow transition-all duration-500 hover:scale-105">
                 Purchase Tickets
               </Button>
-              <Button 
-                size="lg"
-                variant="outline"
-                className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-foreground px-12 py-7 text-lg font-bold transition-all duration-500 hover:scale-105"
-              >
+              <Button size="lg" variant="outline" className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-foreground px-12 py-7 text-lg font-bold transition-all duration-500 hover:scale-105">
                 VIP Packages
               </Button>
             </div>
@@ -490,13 +443,7 @@ const Index = () => {
       </footer>
 
       {/* Ticket Modal */}
-      <TicketModal
-        open={ticketModalOpen}
-        onOpenChange={setTicketModalOpen}
-        ticketType={selectedTicket}
-      />
-    </div>
-  );
+      <TicketModal open={ticketModalOpen} onOpenChange={setTicketModalOpen} ticketType={selectedTicket} />
+    </div>;
 };
-
 export default Index;
