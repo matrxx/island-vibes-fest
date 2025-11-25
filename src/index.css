@@ -8,53 +8,60 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 195 100% 98%;
-    --foreground: 200 25% 15%;
+    --background: 0 0% 100%;
+    --foreground: 220 15% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 200 25% 15%;
+    --card-foreground: 220 15% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 200 25% 15%;
+    --popover-foreground: 220 15% 12%;
 
-    --primary: 185 75% 45%;
+    --primary: 187 85% 43%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 25 95% 60%;
+    --secondary: 18 92% 58%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 195 30% 94%;
-    --muted-foreground: 200 15% 50%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 42 100% 58%;
-    --accent-foreground: 200 25% 15%;
+    --accent: 38 100% 55%;
+    --accent-foreground: 220 15% 12%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 195 30% 88%;
-    --input: 195 30% 88%;
-    --ring: 185 75% 45%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 187 85% 43%;
 
     --radius: 0.75rem;
     
-    /* Caribbean Festival Custom Tokens */
-    --tropical-ocean: 185 75% 45%;
-    --tropical-sunset: 25 95% 60%;
-    --tropical-gold: 42 100% 58%;
-    --tropical-green: 155 65% 45%;
+    /* Premium Caribbean Theme */
+    --ocean-deep: 187 85% 43%;
+    --ocean-light: 187 75% 65%;
+    --coral: 18 92% 58%;
+    --coral-light: 18 85% 70%;
+    --gold: 38 100% 55%;
+    --sand: 42 65% 85%;
+    --forest: 155 55% 38%;
     
-    /* Gradients */
-    --gradient-sunset: linear-gradient(135deg, hsl(25 95% 60%) 0%, hsl(42 100% 58%) 50%, hsl(185 75% 45%) 100%);
-    --gradient-ocean: linear-gradient(180deg, hsl(185 75% 45%) 0%, hsl(195 75% 55%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(185 75% 45% / 0.9) 0%, hsl(25 95% 60% / 0.8) 100%);
+    /* Advanced Gradients */
+    --gradient-premium: linear-gradient(135deg, hsl(187 85% 43%) 0%, hsl(187 75% 55%) 50%, hsl(18 92% 58%) 100%);
+    --gradient-sunset: linear-gradient(180deg, hsl(18 92% 58%) 0%, hsl(38 100% 55%) 50%, hsl(42 65% 75%) 100%);
+    --gradient-ocean: linear-gradient(180deg, hsl(187 85% 43%) 0%, hsl(187 75% 65%) 100%);
+    --gradient-overlay: linear-gradient(135deg, hsl(187 85% 43% / 0.95) 0%, hsl(18 92% 58% / 0.85) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(220 15% 12% / 0.7) 0%, hsl(220 15% 12% / 0.3) 100%);
     
-    /* Shadows */
-    --shadow-tropical: 0 20px 50px -12px hsl(185 75% 45% / 0.25);
-    --shadow-glow: 0 0 40px hsl(42 100% 58% / 0.3);
+    /* Premium Shadows */
+    --shadow-premium: 0 25px 50px -12px hsl(187 85% 43% / 0.3);
+    --shadow-soft: 0 10px 40px -10px hsl(220 15% 12% / 0.1);
+    --shadow-glow: 0 0 60px hsl(38 100% 55% / 0.4);
     
-    /* Transitions */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Smooth Transitions */
+    --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -74,37 +81,36 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 200 25% 8%;
-    --foreground: 195 30% 95%;
+    --background: 220 20% 8%;
+    --foreground: 210 20% 95%;
 
-    --card: 200 20% 12%;
-    --card-foreground: 195 30% 95%;
+    --card: 220 20% 11%;
+    --card-foreground: 210 20% 95%;
 
-    --popover: 200 20% 12%;
-    --popover-foreground: 195 30% 95%;
+    --popover: 220 20% 11%;
+    --popover-foreground: 210 20% 95%;
 
-    --primary: 185 75% 50%;
+    --primary: 187 85% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 25 95% 55%;
+    --secondary: 18 92% 55%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 200 20% 18%;
-    --muted-foreground: 195 20% 65%;
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 10% 60%;
 
-    --accent: 42 100% 55%;
+    --accent: 38 100% 52%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 200 20% 20%;
-    --input: 200 20% 20%;
-    --ring: 185 75% 50%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 187 85% 50%;
     
-    --gradient-sunset: linear-gradient(135deg, hsl(25 95% 55%) 0%, hsl(42 100% 55%) 50%, hsl(185 75% 50%) 100%);
-    --gradient-ocean: linear-gradient(180deg, hsl(185 75% 50%) 0%, hsl(195 75% 60%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(185 75% 50% / 0.9) 0%, hsl(25 95% 55% / 0.8) 100%);
+    --gradient-premium: linear-gradient(135deg, hsl(187 85% 50%) 0%, hsl(187 75% 60%) 50%, hsl(18 92% 55%) 100%);
+    --gradient-overlay: linear-gradient(135deg, hsl(187 85% 50% / 0.95) 0%, hsl(18 92% 55% / 0.85) 100%);
   }
 }
 
@@ -115,5 +121,26 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/40 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/60;
   }
 }
