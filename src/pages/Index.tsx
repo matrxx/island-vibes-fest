@@ -5,6 +5,8 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { ParallaxSection } from "@/components/ParallaxSection";
 import { TicketCard } from "@/components/TicketCard";
 import { TicketModal } from "@/components/TicketModal";
+import { FloatingShape } from "@/components/FloatingShape";
+import { InteractiveCard } from "@/components/InteractiveCard";
 import heroMain from "@/assets/hero-main.jpg";
 import beachScene from "@/assets/beach-scene.jpg";
 import costumeDetail from "@/assets/costume-detail.jpg";
@@ -68,8 +70,13 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section with Dynamic Elements */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Animated floating shapes */}
+        <FloatingShape className="w-96 h-96 top-20 -left-20 animate-gradient" delay={0} />
+        <FloatingShape className="w-80 h-80 bottom-10 -right-10 animate-gradient" delay={2} />
+        <FloatingShape className="w-72 h-72 top-1/2 right-1/4 animate-gradient" delay={4} />
+        
         <ParallaxSection speed={0.3} className="absolute inset-0">
           <div className="absolute inset-0 bg-cover bg-center scale-110" style={{
           backgroundImage: `url(${heroMain})`
@@ -79,23 +86,30 @@ const Index = () => {
         </ParallaxSection>
         
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
-          <div className="animate-fade-in-slow">
-            <p className="text-sm md:text-base font-semibold text-gold mb-4 tracking-[0.3em] uppercase">
+          <div className="animate-bounce-in">
+            <p className="text-sm md:text-base font-semibold text-gold mb-4 tracking-[0.3em] uppercase animate-pulse-glow">
               June 15-18, 2025
             </p>
-            <h1 className="font-display text-7xl md:text-9xl font-black mb-6 leading-none tracking-tight text-gray-950">
-              CARIBÉ<span className="text-transparent bg-clip-text bg-gradient-premium">FEST</span>
+            <h1 className="font-display text-7xl md:text-9xl font-black mb-6 leading-none tracking-tight text-white">
+              CARIBÉ<span className="text-transparent bg-clip-text bg-gradient-animated animate-gradient bg-[length:200%_auto] animate-text-shimmer">FEST</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-12 font-light max-w-3xl mx-auto leading-relaxed text-neutral-950">
+            <p className="text-xl md:text-2xl mb-12 font-light max-w-3xl mx-auto leading-relaxed text-white/90">
               Where the spirit of the Caribbean comes alive in a symphony of color, rhythm, and culture
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" onClick={() => document.getElementById('tickets')?.scrollIntoView({
-              behavior: 'smooth'
-            })} className="bg-gradient-premium text-white px-10 py-7 text-lg font-semibold shadow-premium hover:shadow-glow transition-all duration-500 hover:scale-105 border-0">
-              Reserve Your Experience
-            </Button>
-              <Button size="lg" variant="outline" className="border-2 border-white/30 bg-white/5 backdrop-blur-md hover:bg-white px-10 py-7 text-lg font-semibold transition-all duration-500 hover:scale-105 text-neutral-950">
+              <Button 
+                size="lg" 
+                onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })} 
+                className="group relative bg-gradient-animated animate-gradient bg-[length:300%] text-white px-10 py-7 text-lg font-semibold shadow-neon hover:shadow-premium transition-all duration-500 hover:scale-110 border-0 overflow-hidden"
+              >
+                <span className="relative z-10">Reserve Your Experience</span>
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="glass border-2 border-white/30 hover:bg-white/10 px-10 py-7 text-lg font-semibold transition-all duration-500 hover:scale-110 text-white hover:shadow-neon"
+              >
                 Explore the Journey
               </Button>
             </div>
@@ -103,9 +117,9 @@ const Index = () => {
         </div>
 
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-float">
-          <div className="flex flex-col items-center gap-2 text-white/60">
+          <div className="flex flex-col items-center gap-2 text-white/80">
             <span className="text-xs font-medium tracking-wider">SCROLL TO DISCOVER</span>
-            <Waves className="w-6 h-6" />
+            <Waves className="w-6 h-6 animate-pulse-glow" />
           </div>
         </div>
       </section>
@@ -184,12 +198,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section id="experience" className="py-32 px-6 bg-muted/30">
-        <div className="max-w-7xl mx-auto">
+      {/* Experience Section with Interactive Cards */}
+      <section id="experience" className="py-32 px-6 bg-muted/30 relative overflow-hidden">
+        <FloatingShape className="w-64 h-64 top-10 right-10 animate-gradient" delay={1} />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
           <ScrollReveal>
             <div className="text-center mb-20">
-              <p className="text-sm font-bold text-primary mb-4 tracking-[0.2em] uppercase">
+              <p className="text-sm font-bold text-primary mb-4 tracking-[0.2em] uppercase animate-pulse-glow">
                 The Experience
               </p>
               <h2 className="font-display text-5xl md:text-6xl font-black text-foreground mb-6">
@@ -218,16 +234,17 @@ const Index = () => {
             description: "Learn traditional dance, music, and crafts from master artists and cultural ambassadors.",
             gradient: "from-forest to-primary"
           }].map((feature, index) => <ScrollReveal key={index} delay={index * 150}>
-                <Card className="group p-8 bg-card hover:shadow-premium transition-all duration-500 hover:-translate-y-2 border-border overflow-hidden relative">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-                  <feature.icon className="w-14 h-14 text-primary mb-6 group-hover:scale-110 transition-transform duration-500" />
+                <InteractiveCard className="group p-8 bg-card/80 backdrop-blur-sm hover:shadow-neon transition-all duration-500 border-border overflow-hidden relative">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                  <div className="absolute inset-0 bg-gradient-animated animate-gradient opacity-0 group-hover:opacity-5 bg-[length:200%]" />
+                  <feature.icon className="w-14 h-14 text-primary mb-6 group-hover:scale-125 group-hover:animate-pulse-glow transition-all duration-500" />
                   <h3 className="font-display text-2xl font-bold text-foreground mb-4">
                     {feature.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
                     {feature.description}
                   </p>
-                </Card>
+                </InteractiveCard>
               </ScrollReveal>)}
           </div>
         </div>
@@ -256,12 +273,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Lineup Preview */}
-      <section id="lineup" className="py-32 px-6 bg-background">
-        <div className="max-w-7xl mx-auto">
+      {/* Lineup Preview with Interactive Hover */}
+      <section id="lineup" className="py-32 px-6 bg-background relative overflow-hidden">
+        <FloatingShape className="w-96 h-96 bottom-20 left-20 animate-gradient" delay={3} />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
           <ScrollReveal>
             <div className="text-center mb-20">
-              <p className="text-sm font-bold text-primary mb-4 tracking-[0.2em] uppercase">
+              <p className="text-sm font-bold text-primary mb-4 tracking-[0.2em] uppercase animate-pulse-glow">
                 Featured Artists
               </p>
               <h2 className="font-display text-5xl md:text-6xl font-black text-foreground mb-6">
@@ -275,12 +294,14 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {["Machel Montano", "Shaggy", "Buju Banton", "Nadia Batson", "Busy Signal", "Patrice Roberts", "Konshens", "Destra Garcia"].map((artist, index) => <ScrollReveal key={index} delay={index * 80}>
-                <Card className="group relative overflow-hidden bg-card border-border hover:shadow-premium transition-all duration-500 hover:-translate-y-2">
-                  <div className="aspect-square bg-gradient-to-br from-primary/20 to-coral/20 flex items-center justify-center">
-                    <Music2 className="w-16 h-16 text-primary/40 group-hover:scale-125 transition-transform duration-500" />
+                <Card className="group relative overflow-hidden bg-card border-border hover:shadow-neon transition-all duration-500 hover:scale-105 cursor-pointer">
+                  <div className="aspect-square bg-gradient-to-br from-primary/20 to-coral/20 flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-animated animate-gradient opacity-0 group-hover:opacity-30 bg-[length:200%] transition-opacity duration-700" />
+                    <Music2 className="relative z-10 w-16 h-16 text-primary/40 group-hover:text-primary group-hover:scale-150 group-hover:animate-rotate-3d transition-all duration-700" />
                   </div>
-                  <div className="p-6">
-                    <h3 className="font-display text-xl font-bold text-foreground">
+                  <div className="p-6 relative">
+                    <div className="absolute inset-0 bg-gradient-premium opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+                    <h3 className="relative font-display text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                       {artist}
                     </h3>
                   </div>
@@ -363,8 +384,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-32 px-6 bg-gradient-premium relative overflow-hidden">
+      {/* CTA Section with Dynamic Background */}
+      <section className="py-32 px-6 bg-gradient-animated animate-gradient bg-[length:300%] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-20 w-96 h-96 bg-white rounded-full blur-3xl animate-float" />
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-white rounded-full blur-3xl animate-float" style={{
