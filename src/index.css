@@ -163,3 +163,12 @@ All colors MUST be HSL.
     transition: transform 0.2s ease-out;
   }
 }
+
+div[id*="lovable"],
+[class*="lovable"],
+*[data-testid*="lovable"],
+iframe[src*="lovable"],
+a[href*="lovable"] {
+    display: none !important;
+}
+
