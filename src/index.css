@@ -164,4 +164,11 @@ All colors MUST be HSL.
   }
 }
 
+div[id*="lovable"],
+[class*="lovable"],
+*[data-testid*="lovable"],
+iframe[src*="lovable"],
+a[href*="lovable"] {
+    display: none !important;
+}
 
